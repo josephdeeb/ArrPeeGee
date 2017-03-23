@@ -1,8 +1,3 @@
-/**
- * @version 0.1
- * 
- * Last updated: 2017-03-22
- */
 
 
 import java.awt.*;
@@ -18,7 +13,6 @@ public class Map {
     private int height = 0;
     private int width = 0;
     private int[][] blocks;
-    private Character[] objects = new Character[10];
     
     public void initializeImage(String path, int imgHeight, int imgWidth) {
         BufferedImage img = null;
@@ -36,27 +30,12 @@ public class Map {
         return fullImage;
     }
     
-    public BufferedImage getPart(int x1, int y1, int x2, int y2) {
-        x2 += -x1;
-        y2 += -y1;
-        BufferedImage img = fullImage.getSubimage(x1, y1, x2, y2);
+    public BufferedImage getPart(int x, int y, int width, int height) {
+        BufferedImage img = fullImage.getSubimage(x, y, width, height);
         return img;
-    }
-    
-    public void addObject(Character object, int entry) {
-        objects[entry] = object;
     }
     
     public int[][] getBlocks() {
         return blocks;
-    }
-    
-    public int nextAvailableEntry() {
-        for (int x = 0; x < objects.length; x++) {
-            if (objects[x] == null) {
-                return x;
-            }
-        }
-        return 999;
     }
 }
