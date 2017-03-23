@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.imageio.*;
 
 public class ObjectHandler {
+    
     // Fix so that it actually checks to see if it's possible for the block to be there in order to not go out of bounds.
     // Can possibly reduce CPU strain by having seperate checkBounds for each side, calling each one depending on movement.
     public boolean checkBounds(int x, int y, int width, int height, int[][] blocks) {
@@ -61,5 +62,16 @@ public class ObjectHandler {
         if (blocks[xBlock][yBlock] == 0)
             return false;
         return true;
+    }
+    
+    public void addObject(Map map, Character character, int x, int y, int width, int height) {
+        int entry = map.nextAvailableEntry();
+        if (entry == 999)
+            return;
+        if (!checkBounds(x, y, width, height, map.getBlocks()))
+            return;
+        map.addObject(character, entry);
+        // WIP
+        
     }
 }

@@ -1,3 +1,10 @@
+/**
+ * @version 0.1
+ * 
+ * Last updated: 2017-03-22
+ */
+
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
@@ -38,5 +45,18 @@ public class Map {
     
     public void addObject(Character object, int entry) {
         objects[entry] = object;
+    }
+    
+    public int[][] getBlocks() {
+        return blocks;
+    }
+    
+    public int nextAvailableEntry() {
+        for (int x = 0; x < objects.length; x++) {
+            if (objects[x] == null) {
+                return x;
+            }
+        }
+        return 999;
     }
 }
