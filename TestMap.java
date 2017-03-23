@@ -28,15 +28,6 @@ public class TestMap {
         window.add(game);
         window.pack();
         
-        BufferedImage img = null;
-        
-        try {
-            img = ImageIO.read(new File("src/circle.png"));
-        }
-        catch (IOException e) {}
-        img = (BufferedImage) img.getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-        
-        Character carl = new Character(img);
         JLabel c1 = new JLabel();
         
 /*        
