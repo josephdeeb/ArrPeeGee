@@ -5,15 +5,19 @@ import java.io.*;
 import javax.swing.*;
 import javax.imageio.*;
 
-public class Window extends JFrame {
+public class Window extends JFrame implements KeyListener {
     private Camera cam;
     private Game game;
+    private Character carl;
     
-    public Window(int width, int height, String name) {
+    public Window(int width, int height, String name, Character guy) {
         this.setSize(width, height);
         this.setName(name);
         this.setVisible(true);
+        carl = guy;
+        this.addKeyListener(this);
     }
+    
     
     public void initializeCamera() {
         Map test = new Map();

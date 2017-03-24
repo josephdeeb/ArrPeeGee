@@ -17,7 +17,7 @@ public class Character extends JLabel {
         icon = new ImageIcon(img);
         this.setSize(picture.getWidth(), picture.getHeight());
         this.setIcon(icon);
-        
+        this.setVisible(true);
     }
     
     public BufferedImage getPicture() {

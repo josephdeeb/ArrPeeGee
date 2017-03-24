@@ -5,7 +5,7 @@ import java.io.*;
 import javax.swing.*;
 import javax.imageio.*;
 
-public class Camera extends JPanel {
+public class Camera extends JLayeredPane {
     private int xcoord;
     private int ycoord;
     private JLabel background;
@@ -20,7 +20,8 @@ public class Camera extends JPanel {
         background = new JLabel();
         background.setSize(initWidth, initHeight);
         background.setLocation(0, 0);
-        this.add(background);
+        this.add(background, 1);
+        this.setVisible(true);
     }
     
     public BufferedImage getMap() {
@@ -43,11 +44,10 @@ public class Camera extends JPanel {
             boolean check = checkCoordinates(objects[x]);
             if (!check)
                 break;
-            BufferedImage charPic = objects[x].getPicture();
-            charXcoord = xcoord - objects[x].getX();
-            charYcoord = ycoord - objects[x].getY();
+            charXcoord = objects[x].getXcoord();
+            charYcoord = objects[x].getYcoord();
             objects[x].setLocation(charXcoord, charYcoord);
-            this.add(objects[x]);
+            this.add(objects[x], 0);
         }
         
     }
